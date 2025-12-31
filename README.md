@@ -1,1 +1,1 @@
-KissFit Coaching website repository.
+Fitbykiss Coaching website repository.
