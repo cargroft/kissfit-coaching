@@ -1,77 +1,124 @@
-// --- LÓGICA DEL ROOM DE COACHES ---
-const trainerCards = document.querySelectorAll('.trainer-card');
-const room = document.getElementById('trainer-room');
-const roomImg = document.getElementById('room-img');
-const roomName = document.getElementById('room-name');
-const roomTagline = document.getElementById('room-tagline');
-const roomStyle = document.getElementById('room-style');
-const roomQuote = document.getElementById('room-quote');
+(() => {
+  "use strict";
 
-trainerCards.forEach(card => {
-  card.addEventListener('click', () => {
-    // 1) Quitamos "active" de todos los coaches
-    trainerCards.forEach(c => c.classList.remove('active'));
+  const $ = (sel, root = document) => root.querySelector(sel);
+  const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
 
-    // 2) Marcamos el coach clickeado como activo
-    card.classList.add('active');
+  // =========================================
+  // 1) Coaches room
+  // =========================================
+  const trainerCards = $$(".trainer-card");
+  const room = $("#trainer-room");
+  const roomImg = $("#room-img");
+  const roomName = $("#room-name");
+  const roomTagline = $("#room-tagline");
+  const roomStyle = $("#room-style");
+  const roomQuote = $("#room-quote");
 
-    // 3) Tomamos la info del entrenador
-    const name = card.dataset.name;
-    const tagline = card.dataset.tagline;
-    const style = card.dataset.style;
-    const quote = card.dataset.quote;
-    const img = card.dataset.img;
+  // (Opcional) Select de coach en el form (si existe)
+  const coachSelect = $("#coach");
 
-    // 4) La ponemos en el room
-    roomName.textContent = name;
-    roomTagline.textContent = tagline;
-    roomStyle.textContent = style;
-    roomQuote.textContent = `"${quote}"`;
-    roomImg.src = img;
-    roomImg.alt = name;
+  const setCoachSelectByName = (coachName) => {
+    if (!coachSelect || !coachName) return;
 
-    // 5) Mostramos el room si estaba oculto
-    room.classList.add('active');
+    const options = Array.from(coachSelect.options);
+    const match = options.find((opt) =>
+      opt.textContent.trim().toLowerCase().includes(coachName.trim().toLowerCase())
+    );
+    if (match) coachSelect.value = match.value;
+  };
 
-    // 6) Scroll suave desactivado
-    // room.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  });
-});
+  if (
+    trainerCards.length &&
+    room &&
+    roomImg &&
+    roomName &&
+    roomTagline &&
+    roomStyle &&
+    roomQuote
+  ) {
+    trainerCards.forEach((card) => {
+      card.addEventListener("click", () => {
+        trainerCards.forEach((c) => c.classList.remove("active"));
+        card.classList.add("active");
 
-// --- Sincronizar el select de plan con las tarjetas de precios ---
-const planSelect = document.getElementById('plan');
-const pricingCards = document.querySelectorAll('.pricing-card');
+        const name = card.dataset.name || "";
+        const tagline = card.dataset.tagline || "";
+        const style = card.dataset.style || "";
+        const quote = card.dataset.quote || "";
+        const img = card.dataset.img || "";
 
-if (planSelect) {
-  // Cuando el usuario cambia el plan en el formulario
-  planSelect.addEventListener('change', () => {
+        roomName.textContent = name;
+        roomTagline.textContent = tagline;
+        roomStyle.textContent = style;
+        roomQuote.textContent = quote ? `“${quote}”` : "";
+        if (img) roomImg.src = img;
+        roomImg.alt = name || "Coach";
+
+        room.classList.add("active");
+
+        // Bonus UX: al elegir coach, también lo selecciona en el formulario
+        setCoachSelectByName(name);
+      });
+    });
+  }
+
+  // =========================================
+  // 2) Planes: sincronizar cards ↔ select
+  // =========================================
+  const planSelect = $("#plan");
+  const pricingCards = $$(".pricing-card");
+
+  const syncPlanVisual = () => {
+    if (!planSelect) return;
     const selectedValue = planSelect.value;
 
-    // Quitamos selección visual de todos
-    pricingCards.forEach(card => card.classList.remove('is-selected'));
+    pricingCards.forEach((card) => card.classList.remove("is-selected"));
+    if (!selectedValue) return;
 
-    if (!selectedValue) return; // si elige "Aún no estoy seguro"
+    const target = $(`.pricing-card[data-plan="${selectedValue}"]`);
+    if (target) target.classList.add("is-selected");
+  };
 
-    // Buscamos la tarjeta que coincida con el value
-    const targetCard = document.querySelector(
-      `.pricing-card[data-plan="${selectedValue}"]`
-    );
+  if (planSelect && pricingCards.length) {
+    planSelect.addEventListener("change", syncPlanVisual);
 
-    if (targetCard) {
-      targetCard.classList.add('is-selected');
-    }
-  });
+    pricingCards.forEach((card) => {
+      card.addEventListener("click", () => {
+        const planKey = card.dataset.plan;
+        if (!planKey) return;
 
-  // Extra: si el usuario hace clic en una tarjeta, actualizamos el select
-  pricingCards.forEach(card => {
-    card.addEventListener('click', () => {
-      const planKey = card.dataset.plan;
-      if (!planKey) return;
-
-      planSelect.value = planKey;
-      planSelect.dispatchEvent(new Event('change'));
+        planSelect.value = planKey;
+        syncPlanVisual();
+      });
     });
-  });
-}
 
-console.log('main.js cargado correctamente ✅');
+    // Estado inicial (por si el select ya viene con value)
+    syncPlanVisual();
+  }
+
+  // =========================================
+  // 3) Smooth scroll con offset del header sticky
+  // (para que no se “coma” el título de la sección)
+  // =========================================
+  const header = $("header");
+  const getOffset = () => (header ? header.offsetHeight + 12 : 80);
+
+  document.addEventListener("click", (e) => {
+    const a = e.target.closest('a[href^="#"]');
+    if (!a) return;
+
+    const href = a.getAttribute("href");
+    if (!href || href === "#") return;
+
+    const target = $(href);
+    if (!target) return;
+
+    e.preventDefault();
+
+    const y = target.getBoundingClientRect().top + window.scrollY - getOffset();
+    window.scrollTo({ top: y, behavior: "smooth" });
+
+    history.pushState(null, "", href);
+  });
+})();

@@ -1,24 +1,44 @@
 <!DOCTYPE html>
 <html lang="es">
+  
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>KissFit Coaching - Asesoría Fitness Personal</title>
+  <title>KissFit Coaching | Coach fitness online y presencial</title>
 
-  <!-- Descripción para SEO y redes -->
-  <meta name="description" content="Asesoría fitness online y presencial con coaches personalizados. Planes para perder grasa, ganar músculo y crear hábitos saludables a tu ritmo.">
+  <meta
+    name="description"
+    content="Entrena con coaches profesionales. Planes de fitness personalizados online y presenciales para bajar de peso, ganar músculo y mejorar tu salud."
+  />
+
+  <!-- Open Graph (preview al compartir) -->
+  <meta property="og:title" content="KissFit Coaching | Coach fitness online y presencial" />
+  <meta
+    property="og:description"
+    content="Planes personalizados y sesiones 1:1 online o presenciales para bajar grasa, ganar músculo y crear hábitos sostenibles."
+  />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="es_ES" />
+
+  <!-- Color de UI del navegador -->
+  <meta name="theme-color" content="#E7D4BF" />
 
   <!-- Iconos / Favicon -->
-  <link rel="icon" href="img/favicon.ico" type="image/x-icon">
-  <link rel="apple-touch-icon" href="img/favicon-192.png">
+  <link rel="icon" href="img/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="img/favicon-192.png" />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
 
-  <!-- AQUÍ enlazamos CSS externo -->
-  <link rel="stylesheet" href="css/styles.css">
+  <!-- CSS -->
+  <link rel="preload" href="css/styles.css" as="style" />
+  <link rel="stylesheet" href="css/styles.css" />
 </head>
 
 <body>
@@ -61,9 +81,7 @@
     <section id="servicios" class="services-section">
   <div class="services-section-inner">
     <h2 class="section-title">Servicios de coaching</h2>
-    <p class="section-subtitle">
-      No son rutinas copiadas de internet. Son sesiones pensadas para tu cuerpo, tu horario y tu vida real.
-    </p>
+    <p class="section-subtitle">No son rutinas copiadas de internet. Son sesiones pensadas para tu cuerpo, tu horario y tu vida real.</p>
     <div class="cards">
       <article class="card service-card">
         <div class="service-icon">🧭</div>
@@ -97,9 +115,7 @@
 
     <section id="planes" class="pricing-section">
   <h2 class="section-title">Planes y precios</h2>
-  <p class="section-subtitle pricing-subtitle">
-    Elige cómo quieres empezar: prueba una sesión, comprométete un mes o ve a fondo por un cambio grande.
-  </p>
+  <p class="section-subtitle pricing-subtitle">Elige cómo quieres empezar: prueba una sesión, comprométete un mes o ve a fondo por un cambio grande.</p>
 
   <div class="pricing-cards">
     <!-- Plan 1 -->
@@ -124,11 +140,11 @@
   </div>
       <h3>Pack 3 sesiones por semana</h3>
       <div class="price-row">
-        <span class="price-amount">$300 month</span>
-        <span class="price-detail">/ 12 x 90 min</span>
+        <span class="price-amount">$300</span>
+        <span class="price-detail">/ mes · 12 x 90 min</span>
       </div>
       <p>
-        Un mes de seguimiento real. Sesión por semana, ajustes de ejercicios y acompañamiento para que no abandones a la segunda semana.
+        Un mes de seguimiento real. 3 sesiones por semana (12 al mes), ajustes de ejercicios y acompañamiento para que no abandones a la segunda semana.
       </p>
     </article>
 
@@ -146,13 +162,13 @@
         Para quienes necesitan un contacto cercano, más ajustes y foco más detallado en sus movimientos.
       </p>
     </article>
-  </div>
+    </div>
+</section>
 
-    <section id="entrenadores">
+<section id="entrenadores">
+
   <h2 class="section-title">Conoce a tus coaches</h2>
-  <p class="section-subtitle">
-    Haz clic en un entrenador para entrar a su “room” y conocer su estilo y personalidad.
-  </p>
+  <p class="section-subtitle">Haz clic en un entrenador para entrar a su “room” y conocer su estilo y personalidad.</p>
 
   <div class="trainer-grid">
     <!-- Coach Kismet -->
@@ -164,7 +180,7 @@
       data-quote="Mi meta es que te veas mejor, pero sobre todo que te sientas invencible en tu cuerpo."
       data-img="img/coach-kismet.jpeg"
     >
-      <img src="img/coach-kismet.jpeg" alt="Coach Kismet">
+      <img src="img/coach-kismet.jpeg" alt="Coach Kismet" loading="lazy">
       <h3>Coach Kismet</h3>
       <p>Recomposición corporal · Pérdida de grasa · Hombres y mujeres.</p>
     </article>
@@ -178,7 +194,8 @@
       data-quote="No se trata de ser perfecta, se trata de ser constante. Yo te acompaño en el proceso."
       data-img="img/coach-ari.jpeg"
     >
-      <img src="img/coach-ari.jpeg" alt="Coach Ari">
+      <img src="img/coach-ari.jpeg" alt="Coach Ari" loading="lazy">
+
       <h3>Coach Ari</h3>
       <p>Fuerza · Glúteos · Seguridad y autoestima femenina.</p>
     </article>
@@ -187,13 +204,19 @@
 
   <!-- ROOM dinámico -->
   <div id="trainer-room" class="trainer-room">
-    <img id="room-img" src="" alt="Coach seleccionado">
+    <img
+  id="room-img"
+  src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
+  alt="Coach seleccionado"
+  loading="lazy"
+  decoding="async"
+/>
     <div class="trainer-room-info">
       <div class="trainer-tagline" id="room-tagline"></div>
       <h3 id="room-name"></h3>
       <p id="room-style"></p>
       <p class="trainer-quote" id="room-quote"></p>
-      <a href="#reserva" class="btn-primary" style="margin-top: 8px;">Entrenar con este coach</a>
+      <a href="#reserva" class="btn-primary mt-10">Entrenar con este coach</a>
     </div>
   </div>
 </section>
@@ -202,12 +225,10 @@
   <div class="social-section-header">
     <div class="social-highlight">
       <span>📱</span>
-      <span>Síguelos en Instagram</span>
+      <span>Síguenos en Instagram</span>
     </div>
     <h2 class="section-title">Conecta con tus coaches fuera de la sesión</h2>
-    <p class="section-subtitle">
-      Historias, entrenos, tips de nutrición y la vida real de Kismet y Ari para que te sientas parte del proceso.
-    </p>
+    <p class="section-subtitle">Historias, entrenos, tips de nutrición y la vida real de Kismet y Ari para que te sientas parte del proceso.</p>
   </div>
 
   <div class="ig-grid">
@@ -223,7 +244,7 @@
       <p class="ig-text">
         Entrenos de recomposición, cambios físicos reales y recordatorios de que tu proceso es único. Ideal si buscas disciplina con cariño.
       </p>
-      <a href="https://instagram.com/fitbykiss/" target="_blank" class="ig-cta">
+      <a href="https://instagram.com/fitbykiss/" target="_blank" rel="noopener noreferrer" class="ig-cta">
         <span>Ir al perfil</span> <span>↗</span>
       </a>
     </article>
@@ -240,7 +261,7 @@
       <p class="ig-text">
         Contenido para mujeres: fuerza, glúteos, autoestima y una comunidad que te recuerda que no estás sola en el proceso.
       </p>
-      <a href="https://www.instagram.com/aricoachclub/#" target="_blank" class="ig-cta">
+      <a href="https://www.instagram.com/aricoachclub/#" target="_blank" rel="noopener noreferrer" class="ig-cta">
         <span>Ver contenido</span> <span>💜</span>
       </a>
     </article>
@@ -281,9 +302,7 @@
 
     <section id="reserva" class="booking-section">
   <h2 class="section-title">Reserva tu sesión</h2>
-  <p class="section-subtitle">
-    Completa tus datos y te escribiré para confirmar horario, tipo de sesión y método de pago.
-  </p>
+  <p class="section-subtitle">Completa tus datos y te escribiré para confirmar horario, tipo de sesión y método de pago.</p>
 
   <div class="booking-wrapper">
     <!-- Tarjeta principal con el formulario -->
@@ -366,7 +385,7 @@
           <textarea id="mensaje" name="mensaje" placeholder="Ej: Puedo entrenar después de las 6 pm, tengo molestia en la rodilla derecha, soy principiante…"></textarea>
         </div>
 
-        <button type="submit" class="btn-primary" style="margin-top: 10px;">Enviar solicitud</button>
+        <button type="submit" class="btn-primary mt-10">Enviar solicitud</button>
         <p class="booking-footnote">
            Después de enviar el formulario, recibirás una confirmación en tu correo en poco tiempo.
         </p>
@@ -396,10 +415,8 @@
   <div class="contact-wrapper">
     <div>
       <h2 class="section-title">Contacto directo</h2>
-      <p class="section-subtitle">
-        ¿Tienes dudas sobre los planes, las sesiones o por dónde empezar?
-        Escríbeme y lo vemos juntos paso a paso.
-      </p>
+      <p class="section-subtitle">¿Tienes dudas sobre los planes, las sesiones o por dónde empezar?
+        Escríbeme y lo vemos juntos paso a paso.</p>
       <p class="contact-note">
         *Promesa KissFit: nada de respuestas automáticas raras, te contesta una persona real 💌
       </p>
@@ -413,7 +430,7 @@
         <div class="contact-text">
           <h3>WhatsApp</h3>
           <p>La forma más rápida de coordinar tu primera sesión.</p>
-          <a href="https://wa.me/19543104212" target="_blank">
+          <a href="https://wa.me/19543104212" target="_blank" rel="noopener noreferrer">
             Enviar mensaje por WhatsApp
           </a>
         </div>
@@ -442,11 +459,12 @@
   </footer>
 
 
-<script src="js/main.js"></script>
+<script src="js/main.js" defer></script>
 
 <a href="https://wa.me/19543104212?text=Hola%20quiero%20información%20sobre%20las%20sesiones%20de%20coaching"
    class="whatsapp-float"
    target="_blank"
+   rel="noopener noreferrer"
    aria-label="Chatear por WhatsApp">
   💬
 </a>
